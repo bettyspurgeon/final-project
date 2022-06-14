@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,11 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+
+Route::get('/contactUs', [ContactUsController::class, 'index']);
+Route::post('/contactUs', [ContactUsController::class, 'messageForm']);
+
 Route::get('/template', function () {
     return view('templates/layoutTemplate');
 });
+
