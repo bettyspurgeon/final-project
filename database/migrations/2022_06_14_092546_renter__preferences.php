@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -17,10 +18,10 @@ return new class extends Migration
             $table->id(); 
             $table->unsignedBigInteger('user_id'); 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->int('price_lowest'); 
-            $table->int('price_highest'); 
+            $table->integer('price_lowest'); 
+            $table->integer('price_highest'); 
             $table->string('location', 255); 
-            $table->int('bedrooms');
+            $table->integer('bedrooms');
             $table->float('bathrooms', 3,2);  
             $table->boolean('parking'); 
             $table->boolean('children'); 
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('renter_preferences');
     }
 };

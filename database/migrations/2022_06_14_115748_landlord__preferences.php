@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Users', function (Blueprint $table) {
+        Schema::create('landlord_preferences', function (Blueprint $table) {
             $table->id();
-            $table->string('last_name', 255);
-            $table->string('first_name', 255);
-            $table->string('email', 255);
-            $table->password('password', 255);
-            $table->enum('type', ['landlord', 'seller', 'buyer', 'renter', 'admin']);
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->enum('contract', ['CDI', 'CDD', 'NONE']);
+            $table->integer('income');
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('landlord_preferences');
     }
 };
