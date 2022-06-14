@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PropertyController;
+use App\
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +25,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/properties', [PropertyController::class, 'index']);
+Route::get('/properties/create', [PropertyController::class, 'create'])->middleware(EnsureIsloggedin::class);
 
 require __DIR__.'/auth.php';
 
