@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertyController;
-use App\
+use App\Http\Middleware\PropertyController:
+use App\Http\Middleware\EnsureIsLoggedIn:
+
+
+
 
 
 /*
@@ -27,7 +31,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/properties', [PropertyController::class, 'index']);
-Route::get('/properties/create', [PropertyController::class, 'create'])->middleware(EnsureIsloggedin::class);
+Route::get('/properties/create', [PropertyController::class, 'create'])->middleware(EnsureIsLoggedIn::class);
 
 require __DIR__.'/auth.php';
 
