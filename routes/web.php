@@ -24,3 +24,15 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+
+
+Route::get('/contactUs', [ContactUsController::class, 'index']);
+Route::post('/contactUs', [ContactUsController::class, 'messageForm']);
+Route::get('/aboutUs', function () {
+    return view('aboutUs');
+});
+
+Route::get('/template', function () {
+    return view('templates/layoutTemplate');
+});
+
